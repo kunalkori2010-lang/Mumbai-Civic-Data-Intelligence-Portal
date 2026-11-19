@@ -1,0 +1,6 @@
+{
+  "name": "Mumbai Civic Data Intelligence Portal",
+  "description": "Academic Community Engagement Project | Independent Prototype for BMC Water Connections Analytics, ETL Data Engineering, Power BI Integration, and Local Business Connect.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

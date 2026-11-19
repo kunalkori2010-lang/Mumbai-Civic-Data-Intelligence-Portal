@@ -1,0 +1,62 @@
+{
+  "name": "BMC Civic Water Connections Theme",
+  "dataColors": [
+    "#1E3A8A",
+    "#16A34A",
+    "#D97706",
+    "#1D63B8",
+    "#B91C1C",
+    "#0F766E",
+    "#475569",
+    "#0284C7"
+  ],
+  "background": "#F1F5F9",
+  "foreground": "#0F172A",
+  "tableAccent": "#1E3A8A",
+  "good": "#16A34A",
+  "neutral": "#D97706",
+  "bad": "#B91C1C",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#CBD5E1" } },
+            "radius": 6
+          }
+        ],
+        "title": [
+          {
+            "fontColor": { "solid": { "color": "#0F172A" } },
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 13
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#0F172A" } },
+            "fontSize": 26,
+            "fontFamily": "Segoe UI Bold"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#475569" } },
+            "fontSize": 11
+          }
+        ]
+      }
+    }
+  }
+}

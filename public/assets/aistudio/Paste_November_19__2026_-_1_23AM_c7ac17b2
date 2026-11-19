@@ -1,0 +1,1650 @@
+# MASTER DEVELOPMENT PROMPT — ADVANCED VERSION
+## MUMBAI CIVIC DATA INTELLIGENCE & LOCAL BUSINESS CONNECT PLATFORM
+
+**Build a complete, functional, professional government-style web application integrated with Microsoft Power BI, advanced Data Science analytics, data engineering and local business discovery.**
+
+This is a Semester 4 Data Science Community Engagement Project.
+
+---
+
+# 1. PROJECT VISION
+
+Develop a digital platform named:
+
+**MUMBAI CIVIC DATA INTELLIGENCE PORTAL**
+
+Subtitle: BMC Data Management, Smart Locality Analytics & Business Connect.
+
+The main purpose is to transform scattered or differently formatted municipal information into a structured, searchable, reliable and analysable information system.
+
+The project should also use organised locality information to help residents discover local businesses and help participating retailers improve their digital visibility.
+
+The platform must have three major components:
+
+### MODULE 1 — BMC DATA INTELLIGENCE
+
+- Collect publicly available BMC information.
+- Extract data from PDF, Excel and CSV files.
+- Clean and standardise inconsistent information.
+- Categorise data by ward and department.
+- Store structured information in a central database.
+- Show source documents and original records.
+- Compare ward-level statistics.
+- Generate meaningful data insights.
+- Provide downloadable datasets and reports.
+
+### MODULE 2 — POWER BI & ADVANCED ANALYTICS
+
+- Build professional interactive Power BI reports.
+- Connect Power BI with the cleaned and structured dataset.
+- Use Power Query for transformations.
+- Use DAX for calculated measures.
+- Develop ward-wise analytics and detailed comparisons.
+- Create interactive reports using slicers, bookmarks, drill-through and report tooltips.
+- Display Power BI reports within the website where supported.
+- Provide standalone `.pbix` files for offline demonstration.
+- Generate data-quality and business-impact reports.
+
+### MODULE 3 — LOCAL BUSINESS CONNECT
+
+- Allow local retailers to register.
+- Allow consumers to discover nearby businesses.
+- Provide searchable business categories.
+- Display business information and products or services.
+- Allow consumers to send enquiries.
+- Measure business visibility and engagement.
+- Provide business-owner analytics.
+- Calculate estimated business benefits using actual retailer-provided information.
+
+The three components must work together through common locality, ward and business-category information where appropriate.
+
+IMPORTANT:
+
+This is an academic prototype, not an official BMC application. Do not falsely claim BMC affiliation, endorsement or direct live integration.
+
+Display: "Academic Community Engagement Project | Independent Prototype".
+
+---
+
+# 2. DESIGN AND VISUAL REFERENCE
+
+Use the attached screenshot of the BMC Public Dashboard — Concretization of Roads as the main UI reference.
+
+The application must resemble an authentic government information portal.
+
+Do not create a typical modern startup landing page.
+
+### HEADER DESIGN
+
+- Dark navy-blue government-style header.
+- Original civic-style emblem placeholder on the left.
+- Portal name and subtitle.
+- Social media icons only when actual links are configured.
+- Dark navigation strip below the header.
+- Home icon and clear navigation.
+- Professional typography and readable text.
+
+### MAIN DASHBOARD DESIGN
+
+- Large dashboard heading.
+- Relevant municipal icon.
+- Dataset title and reference date.
+- Search bar.
+- Ward selector.
+- Data-source information.
+- Report download action.
+- Methodology button.
+
+### KPI CARDS
+
+Use four large statistical cards inspired by the screenshot.
+
+Suggested colours:
+- Orange: Total connections.
+- Green: Metered connections.
+- Blue: Non-metered connections.
+- Red or neutral: Wards covered or data-quality status.
+
+Cards must show dynamically calculated values and meaningful descriptions.
+
+### VISUALISATION DESIGN
+
+Use:
+- Professional statistical charts.
+- Ward-wise bar graphs.
+- Stacked comparisons.
+- Data tables.
+- Progress indicators.
+- Interactive maps where geographic data exists.
+- Report navigation.
+- Data-processing status panels.
+
+### COLOUR AND DESIGN RULES
+
+- Navy blue as the primary government colour.
+- White and light-grey content backgrounds.
+- Muted blue navigation.
+- Green for verified or completed status.
+- Orange for attention and pending information.
+- Red for errors or failed validation.
+- Strong contrast and readable typography.
+- Restrained shadows and borders.
+- Responsive desktop, laptop, tablet and mobile layouts.
+
+Avoid:
+- Excessive rounded cards.
+- Unnecessary gradients.
+- Excessive animations.
+- Faded overlays.
+- Low-contrast text.
+- Decorative elements that reduce readability.
+
+The final website should feel like a professionally developed municipal information system.
+
+---
+
+# 3. TECHNOLOGY STACK
+
+Use the following preferred technology stack.
+
+### FRONTEND
+
+- React
+- TypeScript
+- Tailwind CSS
+- Recharts
+- Lucide React
+- React Router
+
+### BACKEND
+
+- Node.js
+- Express.js
+- TypeScript
+- REST APIs
+
+### DATABASE
+
+Preferred:
+- PostgreSQL
+- Prisma ORM or PostgreSQL client.
+
+Use PostgreSQL as the central structured database where possible because the same database can feed the website and Power BI.
+
+If the existing project already uses SQLite, preserve the working database where practical and generate validated, refreshable CSV exports for Power BI rather than creating inconsistent duplicate datasets.
+
+### DATA SCIENCE AND DATA ENGINEERING
+
+- Python
+- Pandas
+- NumPy
+- OpenPyXL
+- GeoPandas
+- PDF extraction libraries
+- Data validation utilities
+
+### BUSINESS INTELLIGENCE
+
+- Microsoft Power BI Desktop
+- Power Query
+- Power Query M
+- DAX
+- Power BI Service, when available and appropriately configured.
+
+### GEOGRAPHICAL ANALYSIS
+
+- Leaflet
+- OpenStreetMap
+- GeoJSON
+- PostGIS or GeoPandas, where necessary.
+
+### API DOCUMENTATION
+
+- Swagger / OpenAPI.
+
+Preserve the existing repository framework where practical. Inspect the current project before modifying architecture.
+
+---
+
+# 4. ACTUAL BMC WATER CONNECTIONS DATASET
+
+Use the attached file:
+
+`BMC_Water_Connections_Ward_Data.xlsx`
+
+Place it inside:
+
+`/data/BMC_Water_Connections_Ward_Data.xlsx`
+
+This is the actual starting dataset. Do not replace it with imaginary information.
+
+The workbook has four sheets:
+
+1. Summary
+2. Ward_Connections
+3. Data_Dictionary
+4. Locality_Survey
+
+Read the sheets according to their actual contents.
+
+### SHEET 1 — SUMMARY
+
+Use the summary to cross-check:
+
+- Number of BMC wards.
+- Metered connections.
+- Non-metered connections.
+- Total connections.
+- Non-metered percentage.
+- Commercial connections.
+- Domestic connections.
+- Industrial connections.
+
+### SHEET 2 — WARD_CONNECTIONS
+
+This is the primary fact source.
+
+Original column names:
+
+- Ward
+- Metered_CM
+- Metered_DM
+- Metered_IND
+- Metered_Total
+- NonMetered_CM
+- NonMetered_DM
+- NonMetered_IND
+- NonMetered_Total
+- All_Connections_Total
+- NonMetered_%_Calculated
+- NonMetered_%_Source
+- Reference_Date
+- Source_Basis
+- Source_URL
+
+Definitions:
+
+CM = Commercial.
+
+DM = Domestic.
+
+IND = Industrial.
+
+There are 24 ward records.
+
+The workbook has a Grand Total row. Exclude this row from individual ward charts and ward counts. Use it only for reconciliation.
+
+Calculate totals from the underlying category columns and compare them with the published figures.
+
+### ACTUAL DATA VALIDATION TOTALS
+
+Total wards: 24.
+
+Metered connections: 529,123.
+
+Non-metered connections: 22,336.
+
+Total connections: 551,459.
+
+Non-metered share: approximately 4.05%.
+
+Category breakdown:
+
+| Category | Metered | Non-metered | Total |
+|---|---:|---:|---:|
+| Commercial | 61,947 | 18,014 | 79,961 |
+| Domestic | 460,845 | 4,198 | 465,043 |
+| Industrial | 6,331 | 124 | 6,455 |
+| Total | 529,123 | 22,336 | 551,459 |
+
+Use these as import-validation checks.
+
+Never silently alter a source value.
+
+### SHEET 3 — DATA_DICTIONARY
+
+Build a dedicated data dictionary using the information in the sheet.
+
+Display:
+- Field name.
+- Field description.
+- Data type.
+- Original or calculated status.
+- Data-processing rule.
+- Dashboard usage.
+
+### SHEET 4 — LOCALITY_SURVEY
+
+This is a blank survey template, not a completed survey.
+
+Create a functional survey interface using its fields:
+
+- Survey date.
+- Locality or block.
+- Respondent type.
+- Water source.
+- Whether connection is metered.
+- Typical water supply hours per day.
+- Supply regularity.
+- Reported interruptions per month.
+- Pressure adequacy.
+- Main water issue.
+- Observation or notes.
+
+Clearly distinguish BMC-reported records from voluntary field observations.
+
+---
+
+# 5. DATA SOURCE AND PROVENANCE MODULE
+
+Create a page called:
+
+**DATA SOURCES & DATA PROVENANCE**
+
+Show complete source information.
+
+Primary source:
+
+Praja Report on the Status of Civic Issues in Mumbai, May 2025, Table 5, printed page 14.
+
+The report reproduces BMC water connection data received through RTI.
+
+Reference date: March 2025.
+
+Source PDF:
+
+https://data.opencity.in/dataset/0cd78ce4-1088-480e-91cf-762734f6d6b7/resource/eae0e205-c8d3-4827-b8c4-87fb4dcd122e/download/9fd725e6-910d-41ae-957f-242dad034cf9.pdf
+
+Related dataset:
+
+https://data.opencity.in/dataset/mumbai-water-connections-details
+
+Important: The related OpenCity resource includes a separate water-connections snapshot dated 3 January 2025. Do not merge it with the March 2025 ward-wise report without explaining the different reference dates.
+
+Display:
+
+- Dataset title.
+- Source organisation.
+- Original source URL.
+- Original publication or reference date.
+- File format.
+- Geographical coverage.
+- Original record count.
+- Processed record count.
+- Last import date.
+- Data verification status.
+- Processing history.
+- Data limitations.
+
+Every data category must be traceable to its source.
+
+Do not represent this dataset as a live connection to BMC.
+
+Add a source-document button that opens the original report.
+
+---
+
+# 6. PAGE 1 — GOVERNMENT-STYLE BMC HOME DASHBOARD
+
+The home dashboard must be the first page.
+
+Title:
+
+**BMC WATER CONNECTIONS DASHBOARD**
+
+Subtitle:
+
+Ward-wise Water Connection Statistics | Reference: March 2025.
+
+### KPI CARDS
+
+Card 1:
+Total Water Connections — 551,459.
+
+Card 2:
+Metered Connections — 529,123.
+
+Card 3:
+Non-Metered Connections — 22,336.
+
+Card 4:
+BMC Wards Covered — 24.
+
+These values must be obtained from the imported and validated database.
+
+### MAIN CHARTS
+
+1. Metered versus non-metered connections.
+2. Connection distribution by commercial, domestic and industrial category.
+3. Ward-wise connection distribution.
+4. Non-metered connection share.
+
+### INTERACTIVE CONTROLS
+
+- Ward selection.
+- Category selection.
+- Metered/non-metered selection.
+- Search.
+- Clear filters.
+- Download current filtered data.
+- Open Power BI Analytics.
+
+All charts and KPI cards must respond to selected filters.
+
+Do not make static charts.
+
+---
+
+# 7. PAGE 2 — CATEGORISED BMC DATA EXPLORER
+
+Create a professional data-explorer interface.
+
+Categories:
+
+1. Commercial Water Connections.
+2. Domestic Water Connections.
+3. Industrial Water Connections.
+4. Metered Connections.
+5. Non-Metered Connections.
+6. Ward-Wise Connections.
+7. Total Connections.
+
+For every category provide:
+
+- Dataset description.
+- Total records.
+- Source.
+- Reference date.
+- Original data.
+- Processed data.
+- Search.
+- Sorting.
+- Column filters.
+- Pagination.
+- Export as CSV.
+- Download source workbook.
+- Data dictionary.
+
+Add a clear label showing whether each dataset has been imported, processed, validated or is still pending.
+
+Provide meaningful empty states for future BMC datasets such as roads, education, healthcare, water infrastructure and waste management.
+
+Do not invent missing datasets.
+
+Design the system so more BMC categories can be added without rebuilding the whole application.
+
+---
+
+# 8. PAGE 3 — ADVANCED WARD ANALYTICS
+
+Show all 24 individual wards.
+
+Build the following charts:
+
+1. Total water connections by ward.
+2. Metered versus non-metered connections by ward.
+3. Commercial, domestic and industrial distribution.
+4. Non-metered connection percentage by ward.
+5. Top five and bottom five wards by total connection count.
+6. Ward-wise connection composition.
+
+Provide:
+
+- Detailed comparison table.
+- Ward search.
+- Dynamic ranking.
+- Connection-category filters.
+- Sortable table.
+- Clickable ward detail panels.
+
+When the user selects a ward, show its full connection breakdown.
+
+Use appropriate terms such as "highest connection count" rather than automatically calling a ward the best-performing ward.
+
+Do not interpret connection counts as evidence of water supply quality, pressure or reliability.
+
+---
+
+# 9. PAGE 4 — DATA ENGINEERING AND ETL MANAGEMENT
+
+This is one of the most important parts of the project.
+
+Title:
+
+**BMC DATA EXTRACTION, CLEANING & STANDARDISATION SYSTEM**
+
+Demonstrate the complete Data Engineering pipeline.
+
+### STAGE 1 — DATA COLLECTION
+
+Show:
+- Input workbook.
+- Source report.
+- File format.
+- Reference date.
+- Original columns.
+
+### STAGE 2 — DATA EXTRACTION
+
+Use Python and Pandas/OpenPyXL to extract the Excel information.
+
+Read:
+- Summary sheet.
+- Ward_Connections sheet.
+- Data_Dictionary sheet.
+- Locality_Survey sheet.
+
+Identify the 24 ward rows and Grand Total row.
+
+### STAGE 3 — DATA PROFILING
+
+Automatically calculate:
+- Row count.
+- Column count.
+- Data types.
+- Missing values.
+- Duplicate records.
+- Unique ward codes.
+- Invalid numeric values.
+- Unexpected categories.
+
+Show a data-profile report before cleaning.
+
+### STAGE 4 — DATA CLEANING
+
+Perform:
+- Missing-value detection.
+- Duplicate checking.
+- Type standardisation.
+- Ward-code validation.
+- Category validation.
+- Numerical validation.
+- Column-name standardisation.
+
+Never delete valid records without justification.
+
+Keep the original workbook unchanged.
+
+### STAGE 5 — DATA TRANSFORMATION
+
+Calculate:
+
+Metered Total = Metered Commercial + Metered Domestic + Metered Industrial.
+
+Non-Metered Total = Non-Metered Commercial + Non-Metered Domestic + Non-Metered Industrial.
+
+All Connections = Metered Total + Non-Metered Total.
+
+Non-Metered Percentage = Non-Metered Total / All Connections × 100.
+
+### STAGE 6 — DATA VALIDATION
+
+Compare processed totals against the published totals.
+
+Expected values:
+
+529,123 metered.
+
+22,336 non-metered.
+
+551,459 total connections.
+
+24 ward records.
+
+Show a visible validation result.
+
+### STAGE 7 — DATA STANDARDISATION
+
+Create consistent field names, formats and categories.
+
+Retain the original values alongside the cleaned values wherever changes are made.
+
+### STAGE 8 — CENTRAL DATABASE
+
+Store processed records in the central database.
+
+Maintain:
+- Original dataset.
+- Cleaned dataset.
+- Normalised analytical dataset.
+- Source metadata.
+- Import history.
+- Validation results.
+
+### STAGE 9 — POWER BI DATASET
+
+Send the validated analytical dataset into the Power BI data model.
+
+### STAGE 10 — DASHBOARD OUTPUT
+
+Display the results in the main website and Power BI.
+
+Every stage must have an explanation, input, output and real processing status.
+
+Never show an operation as completed if the application has not executed it.
+
+---
+
+# 10. ADVANCED DATA QUALITY AND MONITORING
+
+Create a dedicated Data Quality page.
+
+Measure:
+
+- Data completeness.
+- Duplicate percentage.
+- Invalid records.
+- Missing fields.
+- Schema consistency.
+- Numeric validity.
+- Ward coverage.
+- Source verification.
+- Reference-date availability.
+
+Use a transparent data-quality score.
+
+For example:
+
+Completeness Rate = Filled Required Fields / Total Required Fields × 100.
+
+Duplicate Rate = Duplicate Records / Total Records × 100.
+
+Validation Pass Rate = Passed Validation Checks / Total Validation Checks × 100.
+
+Display every formula and explain the limitations of the score.
+
+Additional features:
+
+- Original versus cleaned record comparison.
+- Validation error report.
+- Data issue categories.
+- Download error log.
+- Reprocessing option.
+- Data import history.
+- Data freshness indicator.
+- Dataset version comparison.
+
+Never claim a quality improvement percentage unless the original and processed measurements demonstrate it.
+
+---
+
+# 11. POWER BI — CORE BUSINESS INTELLIGENCE MODULE
+
+POWER BI MUST BE A MAJOR DELIVERABLE, NOT AN OPTIONAL EXTRA.
+
+Build a professional Microsoft Power BI report named:
+
+**BMC_Water_Connections_Analytics.pbix**
+
+The report must connect to the same validated information used by the web application.
+
+Do not maintain unrelated hardcoded values in Power BI.
+
+### A. POWER BI DATA CONNECTION
+
+Preferred approach:
+
+Connect Power BI Desktop to the central PostgreSQL database through the native PostgreSQL Power Query connector.
+
+Load the validated water-connections data from the central analytical tables or database views.
+
+If PostgreSQL is not used, export the validated data from the application's database to structured CSV files and connect Power BI to those files.
+
+Never manually maintain a different copy of the figures without a documented refresh process.
+
+### B. POWER BI DATA MODELLING
+
+Create a clean analytical model using a star-schema approach where appropriate.
+
+Recommended tables:
+
+**FactWaterConnections**
+- WardKey.
+- ConnectionTypeKey.
+- MeterStatusKey.
+- ConnectionCount.
+- ReferenceDate.
+- SourceKey.
+
+**DimWard**
+- WardKey.
+- WardCode.
+- Division, only when verified.
+- Ward description, where available.
+
+**DimConnectionType**
+- ConnectionTypeKey.
+- Commercial.
+- Domestic.
+- Industrial.
+
+**DimMeterStatus**
+- MeterStatusKey.
+- Metered.
+- Non-Metered.
+
+**DimSource**
+- SourceKey.
+- SourceName.
+- SourceURL.
+- ReferenceDate.
+- SourceBasis.
+
+Transform the original wide-format Excel records into a tidy analytical fact table by unpivoting the connection-category columns.
+
+Use 24 × 3 × 2 = 144 analytical ward/category/status combinations if retaining all combinations, including zero counts.
+
+The grand total must not be loaded as an additional ward.
+
+Document all transformations.
+
+### C. POWER QUERY
+
+Use Power Query Editor to implement documented transformations:
+
+- Import data.
+- Promote headers.
+- Set correct data types.
+- Rename columns.
+- Standardise labels.
+- Unpivot relevant columns.
+- Handle null values carefully.
+- Validate ward codes.
+- Create calculated fields where justified.
+- Preserve source and reference-date fields.
+
+Provide the Power Query M scripts in the project documentation.
+
+### D. DAX MEASURES
+
+Create reusable DAX measures.
+
+At minimum:
+
+**Total Connections**
+SUM of valid connection counts.
+
+**Metered Connections**
+Total filtered to Metered status.
+
+**Non-Metered Connections**
+Total filtered to Non-Metered status.
+
+**Metered Percentage**
+Metered Connections / Total Connections.
+
+**Non-Metered Percentage**
+Non-Metered Connections / Total Connections.
+
+**Commercial Connections**
+Total filtered to Commercial category.
+
+**Domestic Connections**
+Total filtered to Domestic category.
+
+**Industrial Connections**
+Total filtered to Industrial category.
+
+**Ward Count**
+Distinct count of valid BMC ward codes.
+
+**Ward Ranking**
+Dynamic rank by total connections.
+
+**Average Connections per Ward**
+Total Connections / Ward Count.
+
+**Connection Category Share**
+Category Connections / Total Connections.
+
+**Data Validation Status**
+Show whether the processed totals match the validated source totals.
+
+Use `DIVIDE()` for safe division.
+
+Ensure measures respect filter context and do not double-count the Grand Total row.
+
+Add meaningful measure descriptions and group the DAX measures into an organised display folder.
+
+### E. POWER BI REPORT PAGES
+
+Build at least these report pages.
+
+**REPORT PAGE 1 — EXECUTIVE OVERVIEW**
+
+Show:
+- Total connections.
+- Metered connections.
+- Non-metered connections.
+- Number of wards.
+- Connection composition.
+- Metered/non-metered comparison.
+- Source and reference date.
+
+**REPORT PAGE 2 — WARD COMPARISON**
+
+Show:
+- All 24 wards.
+- Total connections.
+- Metered and non-metered comparison.
+- Dynamic ward ranking.
+- Category distribution.
+
+**REPORT PAGE 3 — CATEGORY ANALYSIS**
+
+Compare:
+- Commercial.
+- Domestic.
+- Industrial.
+
+Show the contribution of each category and its metering status.
+
+**REPORT PAGE 4 — METERING ANALYSIS**
+
+Show:
+- Metered versus non-metered percentage.
+- Ward comparisons.
+- Category-level differences.
+- Highest and lowest non-metered shares.
+
+**REPORT PAGE 5 — WARD DRILL-THROUGH**
+
+Create a dedicated drill-through page for an individual ward.
+
+Display:
+- Selected ward.
+- Total connections.
+- Metered connections.
+- Non-metered connections.
+- Commercial connections.
+- Domestic connections.
+- Industrial connections.
+- Percentage composition.
+
+**REPORT PAGE 6 — DATA QUALITY & SOURCES**
+
+Show:
+- Record count.
+- Source reference date.
+- Validation status.
+- Missing records.
+- Duplicate records.
+- Data-quality checks.
+- Source information.
+
+**REPORT PAGE 7 — BUSINESS INTELLIGENCE**
+
+Only enable this report page after genuine retailer registration and consumer engagement data is available.
+
+Show:
+- Registered businesses.
+- Business categories.
+- Profile views.
+- Searches.
+- Enquiries.
+- Contact actions.
+- Business feedback.
+
+Do not insert fictional sales or customer numbers.
+
+### F. ADVANCED POWER BI FEATURES
+
+Implement the following where supported by the selected Power BI version:
+
+1. Interactive slicers for ward, category and meter status.
+2. Cross-filtering between charts.
+3. Drill-down and drill-through.
+4. Custom report-page tooltips.
+5. Bookmarks to switch between analytical views.
+6. Page-navigation buttons.
+7. Dynamic chart titles.
+8. Conditional formatting.
+9. Top-N analysis.
+10. Field parameters for switching selected metrics.
+11. Matrix visual with conditional formatting.
+12. Decomposition Tree for analysing connections by status, category and ward.
+13. Dynamic rankings.
+14. A report reset button.
+15. Clear filter controls.
+
+For report-page tooltips, display relevant additional ward and category information when users hover over chart elements.
+
+Use advanced features only when they genuinely help explain the dataset.
+
+Do not add predictive or causal claims that cannot be supported by the 24-row cross-sectional dataset.
+
+### G. POWER BI VISUAL DESIGN
+
+Use a professional BMC-inspired theme.
+
+- Navy-blue report header.
+- White and light-grey canvas.
+- Professional typography.
+- Clean KPI cards.
+- Orange, green, blue and neutral accents.
+- Consistent labels.
+- Clear source footers.
+- Readable chart legends.
+
+Create a reusable Power BI theme JSON file.
+
+The Power BI report should look consistent with the website's design.
+
+### H. POWER BI DELIVERABLES
+
+The project must include:
+
+1. `BMC_Water_Connections_Analytics.pbix`
+2. `BMC_PowerBI_Theme.json`
+3. `PowerBI_DAX_Measures.md`
+4. `PowerQuery_Transformations.m`
+5. `PowerBI_Data_Model.png`
+6. `POWERBI_SETUP.md`
+
+Include instructions for opening, refreshing and validating the report in Power BI Desktop.
+
+If the coding environment cannot create or edit PBIX files directly, generate the complete source CSVs, Power Query M scripts, DAX documentation, theme and precise Power BI construction steps. Never pretend an uncreated PBIX file exists.
+
+---
+
+# 12. POWER BI INTEGRATION WITH THE WEBSITE
+
+Create a dedicated navigation page:
+
+**POWER BI ANALYTICS**
+
+The website must support two ways of accessing the Power BI report.
+
+OPTION 1 — SECURE EMBEDDED REPORT
+
+Where Power BI licensing, workspace and Microsoft Entra configuration are available:
+
+- Integrate the Power BI report using the Power BI JavaScript client.
+- Generate embed configuration and access tokens on the server.
+- Keep secrets on the server.
+- Support report loading and error states.
+- Provide responsive report display.
+- Allow authorised users to interact with embedded reports.
+
+OPTION 2 — LOCAL POWER BI DESKTOP
+
+When secure embedding is not configured:
+
+- Show a clear Power BI report availability status.
+- Provide the `.pbix` download or file location.
+- Provide a button or instructions to open it in Power BI Desktop.
+- Display the application's native interactive analytical dashboard as an immediate alternative.
+
+Do not insert a fake Power BI iframe.
+
+Do not claim a report is embedded if it is not.
+
+Do not use Publish to web for business records, private retailer information or any non-public dataset.
+
+Any public embedding must be separately evaluated for privacy and licensing.
+
+---
+
+# 13. ADVANCED DATA SCIENCE FEATURES
+
+In addition to standard charts, add a dedicated Advanced Analytics area.
+
+### FEATURE 1 — WARD RANKING
+
+Dynamically rank wards by:
+- Total connections.
+- Metered connections.
+- Non-metered connections.
+- Non-metered share.
+
+Allow users to switch ranking criteria.
+
+Explain the meaning of each ranking.
+
+### FEATURE 2 — CATEGORY DISTRIBUTION ANALYSIS
+
+Compare commercial, domestic and industrial connections.
+
+Show:
+- Category shares.
+- Metering composition.
+- Ward-wise differences.
+- Category contribution to total connections.
+
+### FEATURE 3 — STATISTICAL ANALYSIS
+
+Calculate appropriate descriptive statistics:
+
+- Mean.
+- Median.
+- Minimum.
+- Maximum.
+- Standard deviation.
+- Range.
+- Quartiles.
+
+Use them to describe the distribution of connection counts.
+
+Outlier flags may be included as indicators for further verification, not proof of a service problem.
+
+### FEATURE 4 — GEOGRAPHICAL ANALYSIS
+
+When verified ward boundaries or facility coordinates are available:
+
+- Display ward boundaries.
+- Show mapped facilities.
+- Display ward-level statistical information.
+- Use geographic filtering.
+- Allow users to select a ward on the map.
+- Connect map selections to the relevant charts.
+
+Use actual geographic data only.
+
+Do not invent coordinates or ward boundaries.
+
+### FEATURE 5 — DATA QUALITY INTELLIGENCE
+
+Create automated quality checks and a quality summary.
+
+Show:
+- Completeness.
+- Duplicate rate.
+- Invalid-value count.
+- Referential integrity.
+- Validation results.
+- Source freshness.
+
+### FEATURE 6 — ADVANCED BUSINESS ANALYTICS
+
+When business data is collected:
+
+- Analyse business-category distribution.
+- Identify commonly searched categories.
+- Compare listing views and enquiries.
+- Examine geographic business coverage.
+- Measure retailer engagement.
+- Identify categories with low directory coverage.
+
+Distinguish actual registered-business counts from estimates of the total number of businesses in an area.
+
+### FEATURE 7 — FUTURE MACHINE LEARNING
+
+Design the architecture to support future ML models.
+
+Possible future research:
+- Business-category demand analysis.
+- Customer discovery patterns.
+- Facility accessibility analysis.
+- Locality clustering.
+- Business engagement segmentation.
+
+Only implement predictive models when sufficient suitable data is collected.
+
+Do not train models on the current water-connections snapshot and claim that they predict water supply quality or future demand.
+
+---
+
+# 14. PAGE — LOCAL BUSINESS CONNECT
+
+Create a professional separate module connected to the central locality database.
+
+### CONSUMER INTERFACE
+
+Allow users to:
+- Search nearby businesses.
+- Browse business categories.
+- Filter by locality.
+- View shop details.
+- View products and services.
+- Check opening hours.
+- View locations on a map.
+- Contact retailers with permission.
+- Send enquiries.
+- Navigate to participating shops.
+
+### RETAILER INTERFACE
+
+Allow business owners to register:
+
+- Business name.
+- Category.
+- Address.
+- Locality.
+- Description.
+- Products and services.
+- Operating hours.
+- Contact details.
+- Photographs.
+- Consent to public listing.
+
+Allow owners to update their business information.
+
+### ADMIN INTERFACE
+
+Include:
+- Pending listings.
+- Verified listings.
+- Rejected listings.
+- Approval workflows.
+- Listing updates.
+- Data moderation.
+- Outdated listing detection.
+
+### BUSINESS DISCOVERY ANALYTICS
+
+Track:
+- Business profile views.
+- Category searches.
+- Contact actions.
+- Enquiries.
+- Listing engagement.
+- Retailer feedback.
+
+Use aggregated and consented information only.
+
+Do not use private household-level water records or personal information to target consumers.
+
+---
+
+# 15. PAGE — BUSINESS BENEFIT AND ROI ANALYSIS
+
+Develop an actual business impact dashboard.
+
+Show measurable metrics:
+
+- Registered businesses.
+- Verified businesses.
+- Number of categories.
+- Business profile views.
+- Consumer searches.
+- Enquiries.
+- Contact actions.
+- Retailer satisfaction.
+
+Add a retailer ROI calculator.
+
+Inputs:
+
+- Average order value.
+- Additional enquiries attributed to the platform.
+- Estimated conversion percentage.
+- Gross margin.
+- Additional business costs.
+
+Formulas:
+
+Estimated Additional Revenue =
+Additional Attributable Enquiries × Conversion Rate × Average Order Value.
+
+Estimated Gross Profit =
+Estimated Additional Revenue × Gross Margin.
+
+Estimated Incremental Net Benefit =
+Estimated Gross Profit − Additional Costs.
+
+Show the assumptions and calculation process.
+
+Clearly label this as an estimate, not guaranteed earnings.
+
+Do not create fake retailer revenue or sales figures.
+
+Provide a no-data state until actual participating business information is available.
+
+---
+
+# 16. PAGE — INTERACTIVE SYSTEM WORKFLOW
+
+Create a professional interactive flow diagram.
+
+BMC AND GOVERNMENT DATA SOURCES
+↓
+RAW DATA COLLECTION
+↓
+EXCEL / CSV / PDF EXTRACTION
+↓
+DATA PROFILING
+↓
+DATA CLEANING
+↓
+DATA STANDARDISATION
+↓
+DATA VALIDATION
+↓
+CENTRAL DATABASE
+↓
+POWER QUERY
+↓
+POWER BI DATA MODEL
+↓
+DAX ANALYTICS
+↓
+POWER BI REPORTS
+↓
+WEBSITE DASHBOARD
+↓
+LOCAL BUSINESS CONNECT
+↓
+COMMUNITY INSIGHTS AND BUSINESS BENEFITS
+
+Each stage must be clickable.
+
+When a user clicks a stage, show:
+- Description.
+- Input data.
+- Technologies used.
+- Transformation performed.
+- Output data.
+- Actual completion status.
+
+Add a second architecture diagram:
+
+Data Sources → ETL Pipeline → PostgreSQL → Backend API → React Dashboard / Power BI → Users.
+
+Clearly explain the separate roles of:
+- Python and Pandas.
+- Database.
+- Power Query.
+- DAX.
+- Power BI.
+- React.
+- Backend API.
+
+---
+
+# 17. ADVANCED SYSTEM FEATURES
+
+Add the following features to make the application more complete.
+
+### A. DATASET IMPORT CENTRE
+
+Allow authorised administrators to upload:
+- Excel files.
+- CSV files.
+- Supported PDF documents.
+
+Before import:
+- Preview the file.
+- Detect headers.
+- Check column compatibility.
+- Show duplicate and missing-value warnings.
+- Ask for confirmation.
+
+Do not overwrite existing datasets without an explicit confirmation and backup.
+
+### B. DATASET VERSION CONTROL
+
+Each successful import must have:
+- Dataset version.
+- Import timestamp.
+- Source.
+- Record count.
+- Validation status.
+- User or administrator responsible.
+- Change summary.
+
+Allow authorised users to compare versions.
+
+### C. AUDIT LOGS
+
+Track:
+- Data uploads.
+- Data updates.
+- Business approvals.
+- Listing changes.
+- Dataset deletions.
+- User actions.
+
+Do not expose private audit information on public pages.
+
+### D. ROLE-BASED ACCESS CONTROL
+
+Support roles:
+
+1. Public Visitor.
+2. Data Analyst.
+3. Administrator.
+4. Retailer.
+
+Each role must have the correct permissions.
+
+### E. EXPORT CENTRE
+
+Allow:
+- Filtered CSV export.
+- Cleaned dataset download.
+- Source workbook download.
+- Data-quality report export.
+- PDF dashboard report where supported.
+- Power BI report access.
+
+### F. SMART SEARCH
+
+Provide global search across:
+- Dataset names.
+- Ward codes.
+- Connection categories.
+- Business listings.
+- Data sources.
+
+Search results must respect user permissions.
+
+### G. REFRESH MANAGEMENT
+
+Display:
+- Last successful import.
+- Latest source reference date.
+- Last validation.
+- Power BI refresh information.
+- Whether the data is current or awaiting refresh.
+
+Never label an old snapshot as live data.
+
+### H. ERROR MONITORING
+
+Include:
+- Import errors.
+- API errors.
+- Validation failures.
+- Database connection errors.
+- Failed report loads.
+
+Provide understandable error messages.
+
+### I. PERFORMANCE
+
+Implement:
+- Server-side pagination for large tables.
+- Database indexing.
+- API filtering.
+- Efficient chart aggregation.
+- Lazy loading.
+- Appropriate caching.
+- Optimised queries.
+
+### J. OPTIONAL ADVANCED FEATURES
+
+Where practical and useful:
+- Dashboard bookmarks.
+- Custom user views.
+- Notification of data updates.
+- Multi-language interface support.
+- Accessible keyboard navigation.
+- Automated scheduled data-import checks.
+- Documentation of API endpoints.
+
+Do not build decorative features that have no working functionality.
+
+---
+
+# 18. WEBSITE NAVIGATION
+
+Create a professional collapsible sidebar with these sections.
+
+1. Home Dashboard.
+2. BMC Data Explorer.
+3. Water Connections.
+4. Ward Analytics.
+5. Power BI Analytics.
+6. Advanced Analytics.
+7. Data Processing & ETL.
+8. Data Quality.
+9. Data Sources.
+10. Business Connect.
+11. Business Impact.
+12. System Workflow.
+13. Data Import Centre.
+14. Reports & Exports.
+15. About Project.
+
+Keep the navigation consistent across every page.
+
+Use meaningful icons and active-page indicators.
+
+---
+
+# 19. DATABASE DESIGN
+
+Create a well-structured relational database.
+
+Recommended entities:
+
+**Municipal Dataset**
+- Dataset ID.
+- Dataset name.
+- Source.
+- Reference date.
+- Import date.
+- Version.
+- Status.
+
+**Ward**
+- Ward ID.
+- Ward code.
+- Division, if verified.
+- Description.
+
+**Water Connections**
+- Record ID.
+- Ward ID.
+- Connection category.
+- Meter status.
+- Connection count.
+- Reference date.
+- Dataset ID.
+
+**Data Validation**
+- Validation ID.
+- Dataset ID.
+- Check name.
+- Expected value.
+- Actual value.
+- Result.
+- Timestamp.
+
+**Field Survey**
+- Survey ID.
+- Locality.
+- Survey date.
+- Responses.
+- Observations.
+
+**Business**
+- Business ID.
+- Owner account ID.
+- Business name.
+- Category.
+- Address.
+- Locality.
+- Description.
+- Opening hours.
+- Consent status.
+- Verification status.
+
+**Business Engagement**
+- Business ID.
+- Event type.
+- Timestamp.
+- Aggregated engagement information.
+
+**User and Role**
+- User ID.
+- Role.
+- Authentication status.
+
+**Audit Log**
+- User.
+- Action.
+- Resource.
+- Timestamp.
+
+Create appropriate indexes, foreign keys and constraints.
+
+Do not store unnecessary sensitive information.
+
+---
+
+# 20. SECURITY AND PRIVACY
+
+Implement:
+
+- Secure authentication.
+- Role-based permissions.
+- Server-side validation.
+- Parameterised database queries.
+- Environment-based secrets.
+- No API secrets in frontend code.
+- File upload validation.
+- Restricted administrative operations.
+- Consent-based business listing.
+- Minimal survey information.
+- Audit logs.
+- Appropriate deletion and correction mechanisms.
+
+Never display private resident information.
+
+Do not expose confidential business records through public Power BI reports.
+
+Any Power BI public report must contain only information approved for unrestricted public disclosure.
+
+---
+
+# 21. COMPLETE PROJECT DELIVERABLES
+
+The final project must have the following deliverables.
+
+### WEB APPLICATION
+
+- Working React website.
+- Working Express backend.
+- Connected database.
+- Functional BMC dashboard.
+- Data explorer.
+- Ward analytics.
+- Data processing page.
+- Data quality page.
+- Business Connect.
+- Business Impact.
+- Workflow architecture.
+
+### DATA SCIENCE
+
+- Original source files.
+- Cleaned datasets.
+- Python scripts.
+- Data validation scripts.
+- Data dictionary.
+- Data-quality report.
+- Data processing documentation.
+
+### POWER BI
+
+- `BMC_Water_Connections_Analytics.pbix`
+- `BMC_PowerBI_Theme.json`
+- `PowerBI_DAX_Measures.md`
+- `PowerQuery_Transformations.m`
+- `PowerBI_Data_Model.png`
+- `POWERBI_SETUP.md`
+
+### PROJECT DOCUMENTATION
+
+Create:
+
+- `README.md`
+- `DATA_SOURCES.md`
+- `DATA_DICTIONARY.md`
+- `ETL_METHODOLOGY.md`
+- `DATA_QUALITY_REPORT.md`
+- `SYSTEM_ARCHITECTURE.md`
+- `POWERBI_SETUP.md`
+- `BUSINESS_MODULE_GUIDE.md`
+- `API_DOCUMENTATION.md`
+
+---
+
+# 22. TESTING AND FINAL EXECUTION
+
+Do not finish with an incomplete user interface.
+
+Before delivery:
+
+1. Inspect the current project structure.
+2. Set up the dependencies.
+3. Import the actual Excel workbook.
+4. Validate all 24 ward records.
+5. Reconcile all category totals.
+6. Test the database.
+7. Connect all frontend pages to actual APIs.
+8. Test every chart and filter.
+9. Test CSV export.
+10. Test file import and validation.
+11. Test the data-processing workflow.
+12. Test retailer registration.
+13. Test admin approval.
+14. Test consumer search and enquiry.
+15. Verify Power BI data connections.
+16. Validate the DAX calculations.
+17. Test the Power BI report pages.
+18. Test the responsive interface.
+19. Run the production build.
+20. Fix all errors and warnings that affect functionality.
+
+Provide exact startup commands.
+
+For example:
+
+`npm install`
+
+`npm run dev`
+
+`npm run build`
+
+If PostgreSQL is used, provide database setup and migration commands.
+
+If Python is required, provide virtual-environment and dependency installation instructions.
+
+Document how to open and refresh the Power BI report.
+
+Never claim testing has succeeded unless it has actually been performed.
+
+---
+
+# 23. FINAL QUALITY EXPECTATION
+
+The completed application should demonstrate a complete Data Science and Business Intelligence workflow.
+
+A person visiting the portal should be able to understand:
+
+1. What BMC information has been collected.
+2. Where the information originated.
+3. Which files and records were used.
+4. How the data was extracted.
+5. What problems existed in the original data.
+6. How the data was cleaned and standardised.
+7. How the data was validated.
+8. How it was stored in the database.
+9. How Power Query processes the data.
+10. How DAX calculates analytical measures.
+11. How Power BI presents interactive insights.
+12. How the website uses the same validated data.
+13. How participating local businesses can register.
+14. How consumers can discover those businesses.
+15. What measurable benefits can be demonstrated.
+16. What additional data is required for future improvements.
+
+The application must combine:
+
+**Government-style Portal + Data Engineering + Python Data Science + Microsoft Power BI + Local Business Connect.**
+
+The most important priorities are:
+
+- Accuracy of real BMC-related data.
+- Actual working Power BI integration.
+- Professional government-style interface.
+- Transparent data sources.
+- Complete ETL methodology.
+- Advanced yet meaningful data analysis.
+- Working business discovery functionality.
+- Reliable database integration.
+- Professional final presentation.
+
+**Build the working application first. Do not merely generate a beautiful dashboard mockup. The underlying data, processing, database, Power BI reporting, charts, filters and user interactions must genuinely work.**
